@@ -20,7 +20,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
-CSRF_TRUSTED_ORIGINS = ['https://papri-shop.onrender.com','https://*.127.0.0.1']
+CSRF_TRUSTED_ORIGINS = ['https://papri-dotcom.onrender.com','https://*.127.0.0.1']
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-eu(0ujo&$pl+q+#4_o+$%uy=#2w-^nf^bb=^w)m(z#)vz!^zpq'
 
