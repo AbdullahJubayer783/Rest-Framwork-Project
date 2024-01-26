@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework.authtoken',
     'flower',
+    'corsheaders',
     'rest_framework',
     'place_order',
     'contact_us',
@@ -54,9 +55,32 @@ MIDDLEWARE = [
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+
+
+CORS_ALLOWED_ORIGINS = [
+    "http://127.0.0.1:5500/index.html",  # Replace with your frontend domain
+    "https://your-production-frontend.com",
+]
+
+# Allow credentials (cookies, authentication headers)
+CORS_ALLOW_CREDENTIALS = True
+
+# Allow all headers
+CORS_ALLOW_ALL_HEADERS = True
+
+# Allow all methods (GET, POST, PUT, etc.)
+CORS_ALLOW_METHODS = [
+    "DELETE",
+    "GET",
+    "OPTIONS",
+    "PATCH",
+    "POST",
+    "PUT",
+]
 ROOT_URLCONF = 'Paprii_dot_com.urls'
 
 TEMPLATES = [
