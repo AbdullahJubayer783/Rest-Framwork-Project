@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework.authtoken',
     'flower',
+    'django_filters',
     'corsheaders',
     'rest_framework',
     'place_order',
@@ -101,6 +102,9 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'Paprii_dot_com.wsgi.application'
 
+# REST_FRAMEWORK = {
+#       'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend']
+# }
 
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
