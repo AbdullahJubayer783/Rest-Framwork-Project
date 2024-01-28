@@ -64,7 +64,7 @@ MIDDLEWARE = [
 
 CORS_ALLOWED_ORIGINS = [
     "http://127.0.0.1:5500",  # Replace with your frontend domain
-    "https://flowerdetails.html:193",
+    "https:127.0.0.1:5500/flowerdetails.html?flowerId=1",
 ]
 
 # Allow credentials (cookies, authentication headers)
