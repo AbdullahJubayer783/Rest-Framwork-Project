@@ -16,18 +16,12 @@ class FlowerCategoryViewSet(viewsets.ModelViewSet):
     serializer_class = serializers.FlowerCategorySerializer
 
 
-class FlowerViewSet(ListAPIView):
+class FlowerViewSet(viewsets.ModelViewSet):
     queryset = models.FlowerModel.objects.all()
     serializer_class = serializers.FlowerSerializer
     filter_backends = [SearchFilter]
-    search_fields = ['title']
-    # search_fields = ['title','color','flower']
-# class FlowerViewSet(viewsets.ModelViewSet):
-#     queryset = models.FlowerModel.objects.all()
-#     serializer_class = serializers.FlowerSerializer
-    
-
-
+    search_fields = ['title','color__name','flower__name',]
+   
 class ReviewViewSet(viewsets.ModelViewSet):
     queryset = models.ReviewModel.objects.all()
     serializer_class = serializers.ReviewSerializer
