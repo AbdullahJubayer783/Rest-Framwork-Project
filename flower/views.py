@@ -19,10 +19,13 @@ class FlowerCategoryViewSet(viewsets.ModelViewSet):
 class FlowerViewSet(viewsets.ModelViewSet):
     queryset = models.FlowerModel.objects.all()
     serializer_class = serializers.FlowerSerializer
-    filter_backends = [SearchFilter]
-    search_fields = ['title','color__name','flower__name',]
+    filter_backends = [DjangoFilterBackend]
+    filterset_fields = ['title','color','flower',]
+    
    
 class ReviewViewSet(viewsets.ModelViewSet):
     queryset = models.ReviewModel.objects.all()
     serializer_class = serializers.ReviewSerializer
+    filter_backends = [SearchFilter]
+    search_fields = ['flower__id',]
 

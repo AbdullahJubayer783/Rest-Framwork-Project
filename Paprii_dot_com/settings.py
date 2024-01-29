@@ -60,12 +60,16 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+CORS_ORIGIN_ALLOW_ALL = True  # Set to False if you want to specify allowed origins explicitly
+# CORS_ALLOWED_ORIGINS = [
+#     "http://localhost:5500",
+#     "https://yourfrontenddomain.com",
+# ]
 
-
-CORS_ALLOWED_ORIGINS = [
-    "http://127.0.0.1:5500",  # Replace with your frontend domain
-    "https:127.0.0.1:5500/flowerdetails.html?flowerId=1",
-]
+# CORS_ALLOWED_ORIGINS = [
+#     "http://127.0.0.1:5500",  # Replace with your frontend domain
+#     # "https://127.0.0.1:5500",
+# ]
 
 # Allow credentials (cookies, authentication headers)
 CORS_ALLOW_CREDENTIALS = True
