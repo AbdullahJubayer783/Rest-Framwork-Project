@@ -13,11 +13,14 @@ from django.core.mail import EmailMultiAlternatives
 from django.template.loader import render_to_string
 from django.utils.encoding import force_bytes
 from django.shortcuts import redirect
+from django_filters.rest_framework import DjangoFilterBackend
 # Create your views here.
 
 class UserViewSet(viewsets.ModelViewSet):
     queryset = models.UserModel.objects.all()
     serializer_class = serializers.UserSerializer
+    filter_backends = [DjangoFilterBackend]
+    filterset_fields = ['user',]
 
 class UserRegistrationApiView(APIView):
     serializer_class = serializers.RegistrationSerializer
