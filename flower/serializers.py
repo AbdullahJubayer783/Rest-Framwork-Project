@@ -19,6 +19,7 @@ class FlowerSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 class ReviewSerializer(serializers.ModelSerializer):
+    reviewer = serializers.StringRelatedField(many=False)
     class Meta:
         model = models.ReviewModel
         fields = '__all__'
