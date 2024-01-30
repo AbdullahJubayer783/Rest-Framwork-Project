@@ -66,10 +66,10 @@ CORS_ORIGIN_ALLOW_ALL = True  # Set to False if you want to specify allowed orig
 #     "https://yourfrontenddomain.com",
 # ]
 
-# CORS_ALLOWED_ORIGINS = [
-#     "http://127.0.0.1:5500",  # Replace with your frontend domain
-#     # "https://127.0.0.1:5500",
-# ]
+CORS_ALLOWED_ORIGINS = [
+    "http://127.0.0.1:5500",  # Replace with your frontend domain
+    # "https://127.0.0.1:5500",
+]
 
 # Allow credentials (cookies, authentication headers)
 CORS_ALLOW_CREDENTIALS = True
