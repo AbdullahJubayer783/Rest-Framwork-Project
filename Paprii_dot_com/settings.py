@@ -66,10 +66,11 @@ CORS_ORIGIN_ALLOW_ALL = True  # Set to False if you want to specify allowed orig
 #     "https://yourfrontenddomain.com",
 # ]
 
-CORS_ALLOWED_ORIGINS = [
+CSRF_TRUSTED_ORIGINS = [
     "http://127.0.0.1:5500",  # Replace with your frontend domain
-    "https://papri-dotcom.onrender.com",
+    "https://papri-dotcom.onrender.com",  # Add your frontend domain(s) here
 ]
+
 
 # Allow credentials (cookies, authentication headers)
 CORS_ALLOW_CREDENTIALS = True
