@@ -58,23 +58,44 @@ def activate(request,uid64,token):
     else:
         return redirect("register") 
 
+# class UserLoginApiView(APIView):
+#     def post(self, request):
+#         serializer = serializers.UserLoginSerializer(data = self.request.data)  
+#         if serializer.is_valid():
+#             username = serializer.validated_data['username']
+#             password = serializer.validated_data['password']
+
+#             user = authenticate(username = username , password = password)
+
+#             if user:
+#                 token , _ = Token.objects.get_or_create(user=user)
+#                 print(token)
+#                 print(_)
+#                 login(request,user)
+#                 return Response({'token':token.key,'user_id':user.id})
+#             else:
+#                 return Response({'error':"Invalid Credential"})
+#         return Response(serializer.errors)
+
 class UserLoginApiView(APIView):
     def post(self, request):
-        serializer = serializers.UserLoginSerializer(data = self.request.data)  
+        serializer = serializers.UserLoginSerializer(data=self.request.data)
+
         if serializer.is_valid():
             username = serializer.validated_data['username']
             password = serializer.validated_data['password']
-
-            user = authenticate(username = username , password = password)
-
+            user = authenticate(username=username, password=password)
             if user:
-                token , _ = Token.objects.get_or_create(user=user)
-                print(token)
-                print(_)
-                login(request,user)
-                return Response({'token':token.key,'user_id':user.id})
+                token, _ = Token.objects.get_or_create(user=user)
+                # Check if the user is staff
+                if user.is_staff:
+                    login(request, user)
+                    return Response({'token': token.key, 'user_id': user.id,'staff':True})
+                else:
+                    login(request, user)
+                    return Response({'token': token.key, 'user_id': user.id,'staff':False})
             else:
-                return Response({'error':"Invalid Credential"})
+                return Response({'error': "Invalid Credentials"})
         return Response(serializer.errors)
     
 class UserLogoutApiView(APIView):
