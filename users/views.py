@@ -17,6 +17,12 @@ from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import status
 # Create your views here.
 
+class BuiltInUserViewSet(viewsets.ModelViewSet):
+    queryset = User.objects.all()
+    serializer_class = serializers.BuiltInUserSerializer
+    filter_backends = [DjangoFilterBackend]
+    filterset_fields = ['id',]
+
 class UserViewSet(viewsets.ModelViewSet):
     queryset = models.UserModel.objects.all()
     serializer_class = serializers.UserSerializer
