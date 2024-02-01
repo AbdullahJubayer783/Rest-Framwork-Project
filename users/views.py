@@ -14,6 +14,7 @@ from django.template.loader import render_to_string
 from django.utils.encoding import force_bytes
 from django.shortcuts import redirect
 from django_filters.rest_framework import DjangoFilterBackend
+from rest_framework import status
 # Create your views here.
 
 class UserViewSet(viewsets.ModelViewSet):
@@ -57,26 +58,7 @@ def activate(request,uid64,token):
         return redirect("login")
     else:
         return redirect("register") 
-
-# class UserLoginApiView(APIView):
-#     def post(self, request):
-#         serializer = serializers.UserLoginSerializer(data = self.request.data)  
-#         if serializer.is_valid():
-#             username = serializer.validated_data['username']
-#             password = serializer.validated_data['password']
-
-#             user = authenticate(username = username , password = password)
-
-#             if user:
-#                 token , _ = Token.objects.get_or_create(user=user)
-#                 print(token)
-#                 print(_)
-#                 login(request,user)
-#                 return Response({'token':token.key,'user_id':user.id})
-#             else:
-#                 return Response({'error':"Invalid Credential"})
-#         return Response(serializer.errors)
-
+    
 class UserLoginApiView(APIView):
     def post(self, request):
         serializer = serializers.UserLoginSerializer(data=self.request.data)
@@ -99,7 +81,7 @@ class UserLoginApiView(APIView):
         return Response(serializer.errors)
     
 class UserLogoutApiView(APIView):
-    def get(self, request):
+    def post(self, request):
         request.user.auth_token.delete()
         logout(request)
-        return redirect("login")
+        return Response(status=status.HTTP_200_OK)
