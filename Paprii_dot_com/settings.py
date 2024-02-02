@@ -68,6 +68,7 @@ CORS_ORIGIN_ALLOW_ALL = True  # Set to False if you want to specify allowed orig
 
 CSRF_TRUSTED_ORIGINS = [
     "http://127.0.0.1:5501",  # Replace with your frontend domain
+    "https://paprii-dotcom-abdullah.netlify.app",  # Replace with your frontend domain
     "http://localhost:3000",  # Replace with your frontend domain
     "https://papri-dotcom.onrender.com",  # Add your frontend domain(s) here
 ]
